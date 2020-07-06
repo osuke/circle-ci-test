@@ -21,7 +21,7 @@ jobs:
   unit_test:
     executor: default
     step:
-      -checkout
+      - checkout
       - restore_cache
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
