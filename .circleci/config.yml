@@ -7,19 +7,30 @@ executors:
       - image: circleci/node:11.15.0
 
 jobs:
-  default:
+  setup:
     executor: default
     steps:
       - checkout
       - run:
           name: npm install
-          command: npm i && npm run lint
+          command: npm i
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ~/workspace/node_modules
+  unit_test:
+    executor: default
+    step:
+      -checkout
+      - restore_cache
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: unit test
+          command: npm run test:unit
+
 
 workflows:
   demo:
     jobs:
-      - default
+      - setup
+      - unit_test
