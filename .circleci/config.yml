@@ -28,9 +28,10 @@ jobs:
           name: unit test
           command: |
             npm run test:unit
-            echo "hoge" > /tmp/artifact
+            echo "hoge" > ./hoge.html
       - store_artifacts:
-          path: /tmp/artifacts
+          path: ./hoge.html
+          destination: hoge.html
 
 
 workflows:
