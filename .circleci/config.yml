@@ -27,7 +27,7 @@ jobs:
       - run:
           name: unit test
           command: |
-            npm run test:unit:report > /dev/null
+            npm run test:unit:report
       - store_artifacts:
           path: ./coverage
           destination: coverage
