@@ -26,13 +26,13 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: unit test
-          command: npx jest --ci --runInBand --reporters=default --reporters=jest-junit
+          command: npx jest --ci --runInBand --reporters=default --reporters=jest-junit --coverage
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
           path: ./reports/junit/
       - store_artifacts:
-          path: ./reports/junit
+          path: ./coverage
 
 
 workflows:
