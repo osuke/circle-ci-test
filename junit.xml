@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" time="1.27">
+  <testsuite name="HelloWorld.vue" errors="0" failures="0" skipped="0" timestamp="2020-07-07T15:33:28" time="0.703" tests="1">
+    <testcase classname="HelloWorld.vue renders props.msg when passed" name="HelloWorld.vue renders props.msg when passed" time="0.022">
+    </testcase>
+  </testsuite>
+</testsuites>

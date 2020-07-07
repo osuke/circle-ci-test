@@ -1,19 +1,15 @@
 module.exports = {
+  preset: "@vue/cli-plugin-unit-jest",
   reporters: [
     'default',
     [
       'jest-junit',
       {
         suiteName: 'jest tests',
-        outputDirectory: 'reports',
-        outputName: 'js-test-results.xml',
-        classNameTemplate: '{classname}-{title}',
-        titleTemplate: '{classname}-{title}',
-        ancestorSeparator: ' > ',
+        outputDirectory: 'reports'
       },
     ],
   ],
-  preset: "@vue/cli-plugin-unit-jest",
   collectCoverageFrom: [
     "src/**/*.{js|vue}"
   ]
