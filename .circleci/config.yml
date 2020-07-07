@@ -30,7 +30,7 @@ jobs:
             npm run test:unit:report
       - store_artifacts:
           path: ./junit.xml
-          destination: .
+          destination: ./junit.xml
 
 
 workflows:
