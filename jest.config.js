@@ -4,6 +4,6 @@ module.exports = {
     "<rootDir>/tests/unit/**/*.spec.js",
   ],
   collectCoverageFrom: [
-    "src/**/*.{js|vue}"
+    "<rootDir>/src/**/*.{js,vue}"
   ]
 };
