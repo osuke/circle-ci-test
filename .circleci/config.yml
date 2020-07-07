@@ -29,8 +29,8 @@ jobs:
           command: |
             npm run test:unit:report
       - store_artifacts:
-          path: ./junit.xml
-          destination: ./junit.xml
+          path: ./reports
+          destination: ./reports
 
 
 workflows:
