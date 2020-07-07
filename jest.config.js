@@ -1,6 +1,7 @@
 module.exports = {
+  reporters: ["default", "jest-junit"]
   preset: "@vue/cli-plugin-unit-jest",
   collectCoverageFrom: [
-    "<rootDir>/src/**/*.(js|vue)"
+    "src/**/*.{js|vue}"
   ]
 };
