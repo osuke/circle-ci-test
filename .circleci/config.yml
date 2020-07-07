@@ -27,7 +27,7 @@ jobs:
       - run:
           name: unit test
           command: |
-            command: jest --ci --runInBand --reporters=default --reporters=jest-juni
+            command: npx jest --ci --runInBand --reporters=default --reporters=jest-juni
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
