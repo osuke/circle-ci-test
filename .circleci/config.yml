@@ -36,7 +36,7 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./coverage
-  e2e_test:
+  e2e_test_chrome:
     executor: default
     steps:
       - checkout
@@ -53,6 +53,24 @@ jobs:
           name: e2e test
           command: |
             npm run test:e2e
+  e2e_test_firefox:
+    executor: default
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install firefox
+          command: |
+            sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list"
+            sudo apt update
+            sudo apt install libxss1 libasound2 firefox
+            /usr/bin/firefox --version
+
+      - run:
+          name: e2e test
+          command: |
+            npm run test:e2e:firefox
 
 workflows:
   demo:
@@ -61,6 +79,9 @@ workflows:
       - unit_test:
           requires:
             - setup
-      - e2e_test:
+      - e2e_test_chrome:
+          requires:
+            - setup
+      - e2e_test_firefox:
           requires:
             - setup

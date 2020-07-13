@@ -10,8 +10,10 @@
     "test:unit": "vue-cli-service test:unit",
     "test:unit:report": "vue-cli-service test:unit --coverage",
     "test:e2e": "npx start-server-and-test cy:serve http://localhost:8088 cy:run",
+    "test:e2e:firefox": "npx start-server-and-test cy:serve http://localhost:8088 cy:run:firefox",
     "cy:serve": "npm run serve -- --port 8088",
     "cy:run": "npx cypress run --browser chrome",
+    "cy:run:firefox": "npx cypress run --browser firefox --headless",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
