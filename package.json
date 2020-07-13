@@ -9,7 +9,9 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:report": "vue-cli-service test:unit --coverage",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e": "npx start-server-and-test cy:serve http://localhost:8088 cy:run",
+    "cy:serve": "npm run serve -- --port 8088",
+    "cy:run": "npx cypress run --browser chrome",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +23,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-plugin-router": "~4.4.0",
     "@vue/cli-plugin-unit-jest": "~4.4.0",
@@ -29,6 +30,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
+    "cypress": "^4.10.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
