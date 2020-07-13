@@ -33,12 +33,31 @@ jobs:
           path: ./reports/junit/
       - store_artifacts:
           path: ./coverage
-
+  e2e_test:
+    executor: default
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: install chrome
+          command: |
+            sudo apt-get install lsb-release libappindicator3-1
+            curl -L -o google-chrome.deb http://mirror.cs.uchicago.edu/google-chrome/pool/main/g/google-chrome-stable/google-chrome-stable_78.0.3904.108-1_amd64.deb
+            sudo apt install ./google-chrome.deb
+            sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
+      - run:
+          name: e2e test
+          command: |
+            npm run test:e2e
 
 workflows:
   demo:
     jobs:
       - setup
       - unit_test:
+          requires:
+            - setup
+      - e2e_test:
           requires:
             - setup
