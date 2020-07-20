@@ -94,12 +94,12 @@ workflows:
   demo:
     jobs:
       - setup
-      #- unit_test:
-      #    requires:
-      #      - setup
-      #- e2e_test_chrome:
-      #    requires:
-      #      - setup
+      - unit_test:
+          requires:
+            - setup
+      - e2e_test_chrome:
+          requires:
+            - setup
       - e2e_test_firefox:
           requires:
             - setup
