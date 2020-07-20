@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:8088",
+  "baseUrl": "http://localhost:8080",
   "integrationFolder": ".",
   "pluginsFile": "tests/e2e/plugins/index.js",
   "chromeWebSecurity": false

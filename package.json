@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:report": "vue-cli-service test:unit --coverage",
-    "test:e2e": "npx wait-on http://localhost:8088 && npx cypress run",
+    "test:e2e": "npx wait-on http://localhost:8080 && npx cypress run",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
