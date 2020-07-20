@@ -68,11 +68,18 @@ jobs:
       - run:
           name: install firefox
           command: |
-            sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list"
+            # sudo sh -c "echo 'deb http://ftp.hr.debian.org/debian sid main' >> /etc/apt/sources.list"
+            # sudo apt update
+            # sudo apt install libxss1 libasound2 firefox firefox-l10n-ja
+            # /usr/bin/firefox --version
             sudo apt update
-            sudo apt install libxss1 libasound2 firefox
-            /usr/bin/firefox --version
-
+            sudo apt install libgtk-3-dev libdbus-glib-1-dev libnss3 libxss1 libasound2
+            wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/78.0.2/linux-x86_64/ja/firefox-78.0.2.tar.bz2
+            which tar
+            tar xfj firefox-78.0.2.tar.bz2
+            ls -la
+            sudo mv firefox /usr/local/
+            echo "export PATH=/usr/local/firefox:$PATH" >> $BASH_ENV
       - run:
           name: serve
           command: npm run serve
@@ -87,12 +94,12 @@ workflows:
   demo:
     jobs:
       - setup
-      - unit_test:
-          requires:
-            - setup
-      - e2e_test_chrome:
-          requires:
-            - setup
+      #- unit_test:
+      #    requires:
+      #      - setup
+      #- e2e_test_chrome:
+      #    requires:
+      #      - setup
       - e2e_test_firefox:
           requires:
             - setup

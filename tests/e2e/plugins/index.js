@@ -18,6 +18,7 @@ module.exports = (on, config) => {
   on("before:browser:launch", (browser = {}, launchOptions) => {
     if (config.env.lang) {
       launchOptions.args.push(`--lang=${config.env.lang}`);
+      launchOptions.args.push(`--locale=${config.env.lang}`);
       return launchOptions;
     }
   });
