@@ -50,9 +50,15 @@ jobs:
             sudo apt install ./google-chrome.deb
             sudo sed -i 's|HERE/chrome"|HERE/chrome" --no-sandbox|g' /opt/google/chrome/google-chrome
       - run:
-          name: e2e test
+          name: serve
+          command: npm run serve
+          background: true
+
+      - run:
+          name: Run e2e test
           command: |
-            npm run test:e2e
+            npm run test:e2e -- --headless --browser chrome --env lang=ja
+
   e2e_test_firefox:
     executor: default
     steps:
@@ -68,10 +74,14 @@ jobs:
             /usr/bin/firefox --version
 
       - run:
-          name: e2e test
+          name: serve
+          command: npm run serve
+          background: true
+
+      - run:
+          name: Run e2e test
           command: |
-            npm run cy:serve
-            npm run test:e2e:firefox
+            npm run test:e2e -- --headless --browser firefox --env lang=ja
 
 workflows:
   demo:

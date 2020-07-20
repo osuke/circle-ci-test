@@ -15,6 +15,15 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
 
+  on("before:browser:launch", (browser = {}, launchOptions) => {
+    if (browser.name === "chrome" && config.env.lang) {
+      launchOptions.args.push(`--lang=${config.env.lang}`);
+      return launchOptions;
+    }
+  });
+
+  on('task', { log (message) { console.log(message); return null } });
+
   return Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
     integrationFolder: "tests/e2e/specs",
