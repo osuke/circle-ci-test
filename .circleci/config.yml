@@ -4,7 +4,7 @@ executors:
   default:
     working_directory: ~/workspace
     environment:
-      CYPRESS_CACHE_FOLDER: '~/workspace/.cache/Cypress'
+      CYPRESS_CACHE_FOLDER: '~/.cache/Cypress'
     docker:
       - image: circleci/node:11.15.0
 
@@ -20,7 +20,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ~/workspace/node_modules
-            - ~/workspace/.cache/Cypress
+            - ~/.cache
   unit_test:
     executor: default
     steps:
